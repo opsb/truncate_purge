@@ -1,11 +1,10 @@
-require 'rails'
-
 def load_tasks
   load File.dirname(__FILE__) + '/tasks/truncate_purge.rake'
 end
 
 case Rails::VERSION::STRING
 when /^3/ 
+  require 'rails'  
   module TruncatePurge
     class TaskLoader < Rails::Railtie
       rake_tasks do
